@@ -1,6 +1,7 @@
 "use client";
 
 import { exportInvoicePdf } from "@/lib/export-invoice-pdf";
+import { supabase } from "@/lib/supabase";
 import { useMemo, useRef, useState } from "react";
 
 type InvoiceForm = {
@@ -142,6 +143,7 @@ export default function Home() {
   function handleGenerate(e: React.FormEvent) {
     e.preventDefault();
     setGenerated(true);
+    saveInvoice();
     requestAnimationFrame(() => {
       document.getElementById("invoice-preview")?.scrollIntoView({
         behavior: "smooth",
@@ -149,7 +151,25 @@ export default function Home() {
       });
     });
   }
+  async function saveInvoice() {
+  const { error } = await supabase
+    .from("invoices")
+    .insert([
+      {
+        invoice_number: form.invoiceNumber,
+        client_name: form.clientName,
+        client_email: form.clientEmail,
+        service_description: form.serviceDescription,
+        amount: total,
+        notes: form.notes,
+        status: "Generated",
+      },
+    ]);
 
+  if (error) {
+    console.error(error);
+  }
+}
   async function handleDownloadPdf() {
     const element = invoiceCardRef.current;
     if (!element || isExporting) return;
