@@ -419,9 +419,10 @@ export default function Home() {
                   <p className="text-sm font-medium tracking-tight">
                   X-Forge Marketing LLC
                   </p>
-                  <p className="mt-0.5 text-xs text-stone-400">
-                  xforgemarketing@gmail.com
-                  </p>
+                  <div className="mt-0.5 text-xs text-stone-400">
+  <p>5002 Herton Road, Jacksonville, FL 32257</p>
+  <p>xforgemarketing@gmail.com</p>
+</div>
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-light tracking-tight">INVOICE</p>
