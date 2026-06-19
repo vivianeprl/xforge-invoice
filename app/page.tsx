@@ -420,8 +420,7 @@ export default function Home() {
                   X-Forge Marketing LLC
                   </p>
                   <div className="mt-0.5 text-xs text-stone-400">
-  <p>5002 Herton Road
-  Jacksonville, FL 32257</p>
+  <p>5002 Herton Road - Jacksonville, FL 32257</p>
   <p>xforgemarketing@gmail.com</p>
 </div>
                 </div>
